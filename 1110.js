@@ -1,22 +1,21 @@
 let input = parseInt(require('fs').readFileSync('/dev/stdin').toString());
-const original = input;
-let first = 0;
-let second = 0;
+let original = input,
+    count = 0;
 
-if (input < 10){
-  first = 0;
-  second = input;
+while (true) {
+  count++;
+  let 십의자리 = Math.floor(input / 10),
+    일의자리 = input % 10;
+
+  let 새일의자리 = (십의자리 + 일의자리) % 10;
+
+  input = 일의자리 * 10 + 새일의자리;
+
+  if (input == original) {
+    break
+  }
 }
 
-while (input == original){
-  first = input/10;
-  second = input%10;
+console.log(count);
 
-  let cal = first + second;
-  let calSec = cal%10;
-
-  input = second * 10 + calSec
-
-}
-
-
+//7줄에 Math.floor 안해줘서 자꾸 틀렸다.
